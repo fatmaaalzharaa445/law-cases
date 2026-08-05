@@ -1,0 +1,16 @@
+<a
+  class="flex items-center rounded-xl px-4 py-3 font-bold text-secondary transition-colors duration-200"
+  [class.justify-center]="collapsed()"
+  [class.gap-3]="!collapsed()"
+  [class.bg-border]="item().active"
+  [class.hover:bg-border]="!item().active"
+>
+  <ng-icon
+    [name]="item().icon"
+    class="h-5 w-5 shrink-0">
+  </ng-icon>
+
+  @if (!collapsed()) {
+    <span>{{ item().title }}</span>
+  }
+</a>

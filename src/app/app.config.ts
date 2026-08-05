@@ -1,11 +1,60 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
+import { provideIcons } from '@ng-icons/core';
+import {
+  lucideBell,
+  lucideSearch,
+  lucideHouse,
+  lucideFolder,
+  lucideUsers,
+  lucideSettings,
+  lucideCircleHelp,
+  lucideArrowUpDown,
+  lucideEllipsisVertical,
+  lucideCalendarDays,
+  lucideGrid2x2,
+  lucideTable,
+  lucideMenu,
+  lucideBookOpen,
+  lucideSquarePen,
+  lucideChevronLeft,
+  lucideChevronsLeft,
+  lucideChevronsRight,
+  lucideLayoutGrid,
+  lucideList,
+  lucidePanelLeftClose,
+  lucidePanelLeftOpen,
+  lucideSpline,
+  lucideChevronRight,
+} from '@ng-icons/lucide';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes)
+    provideRouter(routes),
+   provideIcons({
+  lucideBell,
+  lucideSearch,
+  lucideFolder,
+  lucideUsers,
+  lucideSettings,
+  lucideCircleHelp,
+  lucideArrowUpDown,
+  lucideEllipsisVertical,
+  lucideCalendarDays,
+  lucideLayoutGrid,
+  lucideMenu,
+  lucideTable,
+  lucideBookOpen,
+  lucideSquarePen,
+  lucideChevronLeft,
+  lucideChevronsLeft,
+  lucideChevronsRight,
+lucidePanelLeftOpen,
+lucidePanelLeftClose,
+lucideSpline,
+lucideChevronRight
+    }),
   ]
 };

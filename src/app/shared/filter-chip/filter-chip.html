@@ -1,0 +1,13 @@
+<button
+  type="button"
+  class="w-24 rounded-xl border-2 px-4 py-2 text-sm transition-colors bg-surface
+         focus-visible:outline-none
+         focus-visible:ring-2
+         focus-visible:ring-brand"
+  (click)="clicked.emit()"
+  [class.font-bold]="selected()"
+  [class.border-ink]="selected()"
+  [class.text-ink]="selected()"
+>
+  {{ label() }}
+</button>

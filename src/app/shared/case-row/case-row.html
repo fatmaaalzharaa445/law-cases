@@ -1,0 +1,67 @@
+<td class="px-4 py-4 text-center border-b border-Border">
+  <input type="checkbox" aria-label="تحديد القضية" class="h-4 w-4 cursor-pointer" />
+</td>
+<td class="ps-4 py-4 border-b border-Border">
+  <bdi>{{ caseItem().number }}</bdi>
+</td>
+
+<td class="ps-4 py-4 border-b border-Border">
+  <p class="truncate font-medium">
+    {{ caseItem().title }}
+  </p>
+
+  <p class="text-sm text-muted">
+    {{ caseItem().city }}
+  </p>
+</td>
+
+<td class="ps-4 py-4 border-b font-semibold border-Border">
+  <ng-icon name="lucideSpline" size="18"> </ng-icon>
+
+  {{ caseItem().stage }}
+</td>
+
+<td class="border-b border-Border px-4 py-4">
+  <div class="flex items-center justify-center gap-3">
+    <div class="min-w-0 text-center">
+      <p class="truncate font-semibold">{{ caseItem().defendant }}</p>
+      <p class="text-xs text-muted">{{ caseItem().defendantType }}</p>
+    </div>
+
+    <div class="flex items-center justify-center gap-3">
+      <span class="text-urgent text-sm mt-1">ضد</span>
+
+      <div class="min-w-0 text-center">
+        <p class="truncate font-semibold">{{ caseItem().plaintiff }}</p>
+        <p class="text-xs text-muted">{{ caseItem().plaintiffType }}</p>
+      </div>
+    </div>
+  </div>
+</td>
+<td class="ps-4 py-4 border-b border-Border">
+  <app-status-badge [status]="caseItem().status"> </app-status-badge>
+</td>
+<td class="py-3 border-b border-Border">
+  <div class="inline-flex items-center gap-2">
+    <ng-icon name="lucideCalendarDays" size="18"> </ng-icon>
+    <div class="flex-1 text-center">
+      <span class="font-semibold">
+        {{ caseItem().nextHearing }}
+      </span>
+      <span class="text-muted">-</span>
+      <span class="text-brand">
+        {{ caseItem().hearingType }}
+      </span>
+    </div>
+  </div>
+</td>
+
+<td class="ps-9 pe-4 py- border-b border-Border text-center">
+  <button
+    aria-label="إجراءات القضية"
+    type="button"
+    class="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface transition-colors hover:bg-border focus-visible:ring-2 focus-visible:ring-brand"
+  >
+    <ng-icon name="lucideEllipsisVertical" size="18"></ng-icon>
+  </button>
+</td>

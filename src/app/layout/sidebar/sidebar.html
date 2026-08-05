@@ -1,0 +1,75 @@
+<div class="relative">
+  @if (collapsed()) {
+    <button
+      type="button"
+      aria-label="فتح القائمة الجانبية"
+      (click)="toggleSidebar()"
+      class="flex h-10 w-10 items-center justify-center fixed rounded-lg border hover:bg-border"
+    >
+      <ng-icon name="lucidePanelLeftClose" size="20"> </ng-icon>
+    </button>
+  }
+  <aside
+    class="flex min-h-screen flex-col overflow-hidden bg-canvas transition-[width] duration-300"
+    [class.w-60]="!collapsed()"
+    [class.w-0]="collapsed()"
+  >
+    <div class="mx-6 mt-5 flex items-center justify-between border-b border-border py-7">
+      <div>
+        <img src="images/logo.png" alt="شعار هارون" class="h-10 w-24 ms-auto" />
+      </div>
+
+      <button
+        type="button"
+        aria-label="بحث"
+        class="ms-24 flex h-10 w-10 items-center justify-center"
+      >
+        <ng-icon name="lucideSearch" size="22"></ng-icon>
+      </button>
+
+      @if (!collapsed()) {
+        <button
+          (click)="toggleSidebar()"
+          type="button"
+          aria-label="طي القائمة الجانبية"
+          class="flex h-10 w-10 items-center justify-center rounded-lg border border-border hover:bg-border"
+        >
+          <ng-icon name="lucidePanelLeftOpen" size="20"> </ng-icon>
+        </button>
+      }
+    </div>
+    <nav class="flex-1 space-y-2 p-4">
+      @for (item of navigation; track item.id) {
+        <app-nav-item [item]="item" [collapsed]="collapsed()"> </app-nav-item>
+      }
+
+      @if (!collapsed()) {
+        <h3 class="text-muted ps-3 text-sm font-medium">سجل الدردشات</h3>
+        @for (chat of chatHistory; track chat.id) {
+          <p
+            class="block w-full truncate cursor-pointer rounded-lg px-2 py-2 text-sm transition-colors hover:bg-border hover:text-ink"
+          >
+            {{ chat.title }}
+          </p>
+        }
+      }
+    </nav>
+
+    <div
+      class="flex items-center h-28 border-t border-border"
+      [class.justify-center]="collapsed()"
+      [class.gap-3]="!collapsed()"
+    >
+      <div class="mb-4 ms-3 h-12 w-12 overflow-hidden rounded-full">
+        <img src="images/Avatar.png" alt="صورة المستخدم" class="h-full w-full object-cover" />
+      </div>
+
+      @if (!collapsed()) {
+        <div>
+          <p class="font-semibold">Rafat Salah</p>
+          <p class="text-sm text-muted">plus</p>
+        </div>
+      }
+    </div>
+  </aside>
+</div>

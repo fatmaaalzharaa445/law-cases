@@ -1,0 +1,58 @@
+<div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+  @if (viewMode() === 'table') {
+    <div
+      class="order-2 lg:order-1 flex items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2"
+    >
+      <label for="pageSize" class="text-sm text-muted"> عرض </label>
+
+      <select   id="pageSize"
+  class="bg-transparent text-sm outline-none" >
+        <option>18</option>
+        <option>24</option>
+        <option>36</option>
+      </select>
+    </div>
+  }
+
+  <div class="order-1 lg:order-2 flex flex-wrap justify-center items-center gap-2 flex-1">
+    <button class="flex h-10 w-10 items-center justify-center rounded-full bg-brand text-surface">
+      <ng-icon name="lucideChevronRight" size="18"></ng-icon>
+    </button>
+
+    <button type="button" class="text-muted">...</button>
+
+    <button
+      type="button"
+      class="h-9 w-9 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+    >
+      4
+    </button>
+    <button
+      type="button"
+      class="h-9 w-9 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+    >
+      3
+    </button>
+    <button
+      type="button"
+      class="h-9 w-9 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+    >
+      2
+    </button>
+
+    <button
+      type="button"
+      aria-current="page"
+      class="h-9 w-9 rounded-full bg-border font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+    >
+      1
+    </button>
+
+    <button
+      type="button"
+      class="flex h-10 w-10 items-center justify-center rounded-full border border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+    >
+      <ng-icon name="lucideChevronLeft" size="18"></ng-icon>
+    </button>
+  </div>
+</div>

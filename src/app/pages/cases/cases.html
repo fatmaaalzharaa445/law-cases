@@ -1,0 +1,121 @@
+<div class="mt-8 mx-4 lg:mx-8 flex flex-col gap-4 lg:flex-row lg:items-center">
+  <div class="flex flex-wrap gap-1 rounded-lg border-2 bg-canvas border-border p-1">
+    @for (filter of filters(); track filter) {
+      <app-filter-chip
+        [label]="filter"
+        [selected]="filter === selectedFilter()"
+        (clicked)="selectedFilter.set(filter)"
+      >
+      </app-filter-chip>
+    }
+  </div>
+
+  <div class="relative flex-1">
+    <ng-icon
+      name="lucideSearch"
+      class="absolute start-3 top-1/2 -translate-y-1/2 text-muted"
+      size="24"
+    >
+    </ng-icon>
+
+    <input
+      type="text"
+      aria-label="البحث عن قضية"
+      placeholder="ابحث في القضايا..."
+      [value]="search()"
+      (input)="onSearch($event)"
+      class="w-full rounded-xl border border-brand py-3 pe-12 ps-12 outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:border-brand"
+    />
+  </div>
+
+  <div class="flex w-full lg:w-auto rounded-xl border border-border overflow-hidden">
+    <button
+      type="button"
+      aria-label="عرض جدولي"
+      (click)="viewMode.set('table')"
+      class="flex-1 lg:w-20 h-12 flex items-center justify-center rounded-xl transition-colors hover:bg-brand-light duration-200 focus-visible:ring-2 focus-visible:ring-brand"
+      [class.bg-brand]="viewMode() === 'table'"
+      [class.text-white]="viewMode() === 'table'"
+      [class.bg-white]="viewMode() !== 'table'"
+      [class.text-secondary]="viewMode() !== 'table'"
+    >
+      <ng-icon name="lucideMenu" size="24"> </ng-icon>
+    </button>
+
+    <button
+      type="button"
+      aria-label="عرض بطاقات"
+      (click)="viewMode.set('grid')"
+      class="flex-1 lg:w-20 h-12 flex items-center justify-center rounded-xl hover:bg-brand-light transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-brand"
+      [class.bg-brand]="viewMode() === 'grid'"
+      [class.text-white]="viewMode() === 'grid'"
+      [class.bg-white]="viewMode() !== 'grid'"
+      [class.text-secondary]="viewMode() !== 'grid'"
+    >
+      <ng-icon name="lucideLayoutGrid" size="24"> </ng-icon>
+    </button>
+  </div>
+</div>
+@if (viewMode() === 'grid') {
+  <div class="grid gap-6 mt-5 mx-8 [grid-template-columns:repeat(auto-fit,minmax(320px,1fr))]">
+    @for (item of filteredCases(); track item.id) {
+      <app-case-card [caseItem]="item"> </app-case-card>
+    }
+  </div>
+} @else {
+  <div class="my-8 overflow-x-auto  rounded-2xl bg-white shadow mx-7">
+    <table class="w-full min-w-[1100px] lg:min-w-full table-fixed border-collapse">
+      <thead class="bg-border h-14">
+        <tr>
+          <th class="w-7 ps-4  text-center">
+            <input type="checkbox" aria-label="تحديد جميع القضايا" class="cursor-pointer" />
+          </th>
+
+          <th class="w-[120px] ps-2 text-center font-medium">
+            <ng-icon name="lucideArrowUpDown" size="14" class="text-muted"> </ng-icon>
+            رقم القضية
+          </th>
+
+          <th class="w-[260px] text-center font-medium">
+            <ng-icon name="lucideArrowUpDown" size="14" class="text-muted"> </ng-icon>
+            عنوان القضية
+          </th>
+
+          <th class="w-[100px] text-center font-medium">
+            <ng-icon name="lucideArrowUpDown" size="14" class="text-muted"> </ng-icon>
+            المرحلة
+          </th>
+
+          <th class="w-[260px] text-center font-medium">
+            <ng-icon name="lucideArrowUpDown" size="14" class="text-muted"> </ng-icon>
+            الأطراف
+          </th>
+
+          <th class="w-[100px] text-center font-medium">
+            <ng-icon name="lucideArrowUpDown" size="14" class="text-muted"> </ng-icon>
+            الحالة
+          </th>
+
+          <th class="w-[135px] text-center font-medium">
+            <ng-icon name="lucideArrowUpDown" size="14" class="text-muted"> </ng-icon>
+            أقرب موعد
+          </th>
+
+          <th class="w-[100px] text-center">
+            <ng-icon name="lucideArrowUpDown" size="14" class="text-muted"> </ng-icon>
+            الإجراءات
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (item of filteredCases(); track item.id) {
+          <tr appCaseRow [caseItem]="item"></tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}
+<div class="mt-10 px-8 pb-8 pt-6">
+  <app-pagination [viewMode]="viewMode()"> </app-pagination>
+</div>

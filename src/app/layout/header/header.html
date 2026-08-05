@@ -1,0 +1,43 @@
+<header
+  class="flex h-20 items-center justify-between rounded-t-2xl border-b border-border bg-surface px-4 md:px-8 lg:px-16"
+>
+  <div class="flex items-center gap-2">
+    <h2 class="text-sm sm:text-2xl text-ink">القضايا</h2>
+
+    <ng-icon name="lucideChevronLeft" size="18" class="text-muted"> </ng-icon>
+  </div>
+  <div class="flex items-center gap-3">
+    <button
+      type="button"
+      aria-label="الإشعارات"
+      class="flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-muted"
+    >
+      <ng-icon name="lucideBell" size="24" class="text-ink"> </ng-icon>
+    </button>
+
+    <button
+      type="button"
+      aria-label="المساعدة"
+      class="flex h-10 w-10 items-center justify-center rounded-full transition hover:bg-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+    >
+      <ng-icon name="lucideCircleHelp" size="24" class="text-ink"> </ng-icon>
+    </button>
+  </div>
+</header>
+<section
+  class="flex flex-col gap-4 px-4 py-5 md:flex-row md:items-center md:justify-between md:px-8"
+>
+  <div>
+    <h1 class="text-xl md:text-2xl font-bold text-secondary">إدارة القضايا</h1>
+
+    <p class="mt-1 text-xs md:text-lg text-muted">إدارة جميع القضايا القانونية</p>
+  </div>
+
+  <div class="flex items-center gap-4">
+    <button
+      class="w-full md:w-auto rounded-xl bg-brand px-5 py-3 font-medium text-white hover:bg-brand-light"
+    >
+      إضافة قضية
+    </button>
+  </div>
+</section>

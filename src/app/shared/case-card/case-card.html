@@ -1,0 +1,64 @@
+<div class="h-full rounded-2xl bg-surface border border-Border p-5 shadow-sm flex flex-col">
+  <div class="flex justify-between items-center">
+    <div class=" min-w-0">
+      <h3 class=" truncate  font-bold text-lg">
+        {{ caseItem().title }}
+      </h3>
+
+      <p class="text-sm text-muted"><bdi>{{ caseItem().number }}</bdi>-{{ caseItem().city }}</p>
+    </div>
+    <div class="flex items-center gap-3 min-w-0">
+      <button
+        type="button"
+        aria-label="إجراءات القضية"
+        class="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface transition-colors hover:bg-border focus-visible:ring-2 focus-visible:ring-brand"
+      >
+        <ng-icon name="lucideEllipsisVertical" size="18"></ng-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="space-y-4">
+    <div class="flex items-center justify-start">
+      <span class="text-muted text-sm">المرحلة : </span>
+      <p>
+        {{ caseItem().stage }}
+      </p>
+    </div>
+
+    <div class="flex items-center justify-start w-full gap-2">
+      <span class="text-muted text-sm">الاطراف :</span>
+
+      <div class=" min-w-0 text-center">
+        <p class="truncate font-semibold">{{ caseItem().defendant }}</p>
+        <p class="text-xs text-muted">{{ caseItem().defendantType }}</p>
+      </div>
+
+      <div class="flex items-center justify-center gap-3">
+        <span class="text-urgent text-sm mt-1">ضد</span>
+
+        <div class="min-w-0 text-center">
+          <p class="truncate font-semibold">{{ caseItem().plaintiff }}</p>
+          <p class="text-xs text-muted">{{ caseItem().plaintiffType }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="  gap-4 flex items-start justify-between">
+      <div class="inline-flex items-center gap-2">
+        <ng-icon name="lucideCalendarDays" size="18"> </ng-icon>
+        <div>
+          <span class="w-full font-semibold">
+            {{ caseItem().nextHearing }}
+          </span>
+         <span class="text-muted">-</span>
+          <span class="text-brand text-xs">
+            {{ caseItem().hearingType }}
+          </span>
+        </div>
+      </div>
+
+      <div><app-status-badge [status]="caseItem().status"> </app-status-badge></div>
+    </div>
+  </div>
+</div>
