@@ -21,8 +21,9 @@ A responsive Cases Dashboard built with **Angular 22**, **Standalone Components*
 - TypeScript
 - Angular Signals
 - Standalone Components
-- Tailwind CSS
-- @ng-icons
+- Tailwind CSS v3
+
+- @ng-icons lucide 
 
 ## Project Structure
 
@@ -48,7 +49,7 @@ src/
 Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone <https://github.com/fatmaaalzharaa445/law-cases.git>
 ```
 
 Install dependencies:
